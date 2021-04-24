@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+    <br>
+    <br>
+   <h2>Wypełnij dane</h2>
+
+<form>
+  <label for="email">Adres mailowy:</label><br>
+  <input type="text" id="email" name="email"><br>
+
+  <label for="tittleemail">Tytuł maila:</label><br>
+  <input type="text" id="tittleemail" name="tittleemail">
+
+
+
+</form>
+
+<p>Dodaj obrazek</p>
+
+<form>
+
+<label for="time">O której wysłać?</label><br>
+<input type="time" id="time" name="time"><br><br>
+    <button type="submit">Zapisz</button>
+
+</form>
+
+
+
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a> / <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+{% endblock %}
